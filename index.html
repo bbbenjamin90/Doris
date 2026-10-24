@@ -1,0 +1,1987 @@
+<!doctype html>
+<html
+  lang="en"
+>
+  <head>
+    <meta
+      charset="utf-8"
+    >
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    >
+    <meta
+      name="theme-color"
+      content="#281a31"
+    >
+    <meta
+      name="description"
+      content="A birthday keepsake for Doris, turning 22, a dear friend and sister at heart."
+    >
+    <meta
+      property="og:title"
+      content="For Doris, my sister by heart"
+    >
+    <meta
+      property="og:description"
+      content="Twenty-two looks beautiful on you."
+    >
+    <meta
+      property="og:image"
+      content="og-preview.jpg"
+    >
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Doris smiling, for her birthday keepsake">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>
+      For Doris — A Birthday Keepsake
+    </title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    >
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    >
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Sacramento&amp;display=swap"
+      rel="stylesheet"
+    >
+    <link
+      rel="stylesheet"
+      href="doris.css"
+    >
+    <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="For Doris">
+  <noscript><style>.welcome-screen{display:none!important}.js-reveal .reveal{opacity:1!important;transform:none!important}</style></noscript>
+  </head>
+  <body
+    class="theme-plum"
+  >
+    <a
+      class="skip-link"
+      href="#main-content"
+    >
+      Skip to the celebration
+    </a>
+    <div
+      class="ambient-layer"
+      aria-hidden="true"
+    >
+      <span
+        class="ambient-orb ambient-orb--one"
+      >
+      </span>
+      <span
+        class="ambient-orb ambient-orb--two"
+      >
+      </span>
+      <span
+        class="ambient-orb ambient-orb--three"
+      >
+      </span>
+    </div>
+    <canvas
+      class="celebration-canvas"
+      id="celebration-canvas"
+      aria-hidden="true"
+    >
+    </canvas>
+    <div
+      class="reading-progress"
+      id="reading-progress"
+      aria-hidden="true"
+    >
+    </div>
+    <section
+      class="welcome-screen"
+      id="welcome-screen"
+      aria-labelledby="welcome-title"
+    >
+      <div class="welcome-screen__glow" aria-hidden="true"></div>
+      <div class="welcome-screen__content">
+        <p class="eyebrow eyebrow--gold">A little world made just for you</p>
+        <div class="welcome-seal" aria-hidden="true">
+          <span>✳</span>
+          <small>for</small>
+          <b>D</b>
+        </div>
+        <h2 id="welcome-title">For Doris,<br><em>my sister by heart.</em></h2>
+        <p class="welcome-screen__date">Sunday <span>·</span> October 25</p>
+        <p class="welcome-screen__promise">A little song, a few memories, and one big wish for your twenty-second year are waiting for you.</p>
+
+        <div class="welcome-song" aria-label="Intro song: Unaweza by Paul Clement">
+          <span class="welcome-song__record" aria-hidden="true">♫</span>
+          <div class="welcome-song__details">
+            <span class="welcome-song__eyebrow">Your opening soundtrack</span>
+            <strong>Unaweza</strong>
+            <small>Paul Clement ft. Patrick Temba · faith for the year ahead</small>
+          </div>
+          <button class="welcome-song__button" id="welcome-play-music" type="button">Play song</button>
+        </div>
+        <p class="welcome-song__status" id="welcome-song-status" aria-live="polite">The song will start when you unlock your surprise. If sound is blocked, tap Play song.</p>
+
+        <form class="welcome-gate" id="welcome-gate-form">
+          <label for="welcome-passcode">Your four-digit passcode</label>
+          <div class="welcome-gate__entry">
+            <input
+              id="welcome-passcode"
+              name="passcode"
+              type="password"
+              inputmode="numeric"
+              pattern="[0-9]{4}"
+              maxlength="4"
+              minlength="4"
+              autocomplete="off"
+              placeholder="••••"
+              aria-describedby="welcome-passcode-help welcome-passcode-error"
+              aria-invalid="false"
+              required
+            >
+            <button class="button button--light button--large" id="unlock-surprise" type="submit">
+              <span>Unlock the surprise</span>
+              <span class="button__icon" aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <p class="welcome-gate__help" id="welcome-passcode-help">Hint: it’s the day and month of your birthday, in four digits.</p>
+          <p class="welcome-share" id="welcome-share" hidden>To help Benjamin see how you enjoyed it, this page tells him which surprises you open. Your photos and private notes are never sent unless you press Send. <button class="text-button" id="share-toggle" type="button" aria-pressed="true">Sharing is on · tap to turn off</button></p>
+          <p class="welcome-gate__error" id="welcome-passcode-error" role="alert"></p>
+        </form>
+
+        <div class="welcome-countdown" id="welcome-countdown" tabindex="-1" hidden aria-live="off">
+          <p class="welcome-countdown__eyebrow">The surprise is almost here</p>
+          <div class="welcome-countdown__clock">
+            <span id="welcome-countdown-value">5</span>
+            <span>seconds</span>
+          </div>
+          <p class="welcome-countdown__message">Take a breath, turn up the music, and get ready to feel celebrated.</p>
+          <div class="welcome-countdown__track" role="progressbar" aria-label="Time until the birthday story opens" aria-valuemin="0" aria-valuemax="5" aria-valuenow="5">
+            <span id="welcome-countdown-progress"></span>
+          </div>
+        </div>
+      </div>
+      <div class="welcome-screen__photo" aria-hidden="true">
+        <img src="d10.jpeg" alt="">
+        <div class="welcome-screen__photo-caption">a beautiful soul, celebrated</div>
+      </div>
+    </section>
+    <header
+      class="site-header"
+      id="site-header"
+    >
+      <a
+        class="brand"
+        href="#home"
+        aria-label="For Doris, a birthday keepsake. Back to the beginning"
+      >
+        <span
+          class="brand__flower"
+          aria-hidden="true"
+        >
+          ✳
+        </span>
+        <span
+          class="brand__words"
+        >
+          <b>
+            For Doris
+          </b>
+          <small>
+            a birthday keepsake
+          </small>
+        </span>
+      </a>
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open navigation menu"
+      >
+        <span>
+        </span>
+        <span>
+        </span>
+      </button>
+      <nav
+        class="primary-navigation"
+        id="primary-navigation"
+        aria-label="Main navigation"
+      >
+        <a href="#letter">The letter</a>
+        <a href="#gallery">Photo album</a>
+        <a href="#video-memory">The video</a>
+        <a href="#wish-jar">Birthday wishes</a>
+        <a
+          class="navigation-cta"
+          href="#send-a-note"
+        >
+          Leave a note
+          <span
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+        </a>
+      </nav>
+    </header>
+    <main
+      id="main-content"
+    >
+      <section
+        class="hero-section"
+        id="home"
+        aria-labelledby="hero-title"
+      ><div class="balloons" aria-hidden="true"><span class="balloon" style="--x:6%;--d:16s;--w:0s;--c:#eea08b"></span><span class="balloon" style="--x:22%;--d:19s;--w:3s;--c:#edc474"></span><span class="balloon" style="--x:41%;--d:15s;--w:6s;--c:#c89cc2"></span><span class="balloon" style="--x:58%;--d:21s;--w:1s;--c:#f7c9b1"></span><span class="balloon" style="--x:74%;--d:17s;--w:8s;--c:#eea08b"></span><span class="balloon" style="--x:90%;--d:20s;--w:4s;--c:#edc474"></span></div>
+        <div
+          class="hero-section__stars"
+          aria-hidden="true"
+        >
+          <span>
+            ✦
+          </span>
+          <span>
+            ✧
+          </span>
+          <span>
+            ✳
+          </span>
+          <span>
+            ✧
+          </span>
+        </div>
+        <div
+          class="hero-section__copy"
+        >
+          <p
+            class="eyebrow"
+          >
+            <span
+              class="eyebrow__line"
+            >
+            </span>
+            Sunday, October 25, 2026 · East Africa Time
+          </p>
+          <p
+            class="hero-section__overline"
+          >
+            Your birthday is almost here
+          </p>
+          <h1
+            id="hero-title"
+          >
+            The world is
+            <br>
+            a little brighter
+            <br>
+            <em>
+              with you in it.
+            </em>
+          </h1>
+          <p
+            class="hero-section__intro"
+          >
+            Doris, you are one of those rare people who feels like family. This little corner of the internet is a reminder that you are loved, appreciated, and worth celebrating every single day.
+          </p>
+          <div
+            class="hero-section__actions"
+          >
+            <a
+              class="button button--cream"
+              href="#letter"
+            >
+              <span>
+                Read your letter
+              </span>
+              <span
+                aria-hidden="true"
+              >
+                ↓
+              </span>
+            </a>
+            <button
+              class="button button--text"
+              type="button"
+              data-scroll-to="#gallery"
+            >
+              <span>
+                Wander through the photos
+              </span>
+              <span
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </button>
+          </div>
+          <div
+            class="birthday-clock"
+            id="birthday-clock"
+            aria-live="off"
+          >
+            <p
+              class="birthday-clock__label"
+              id="clock-label"
+            >
+              Until your birthday begins
+            </p>
+            <div
+              class="birthday-clock__units"
+              id="clock-units"
+            >
+              <div
+                class="clock-unit"
+              >
+                <b
+                  id="countdown-days"
+                >
+                  00
+                </b>
+                <span>
+                  days
+                </span>
+              </div>
+              <span
+                class="clock-divider"
+                aria-hidden="true"
+              >
+                :
+              </span>
+              <div
+                class="clock-unit"
+              >
+                <b
+                  id="countdown-hours"
+                >
+                  00
+                </b>
+                <span>
+                  hours
+                </span>
+              </div>
+              <span
+                class="clock-divider"
+                aria-hidden="true"
+              >
+                :
+              </span>
+              <div
+                class="clock-unit"
+              >
+                <b
+                  id="countdown-minutes"
+                >
+                  00
+                </b>
+                <span>
+                  minutes
+                </span>
+              </div>
+            </div>
+            <p
+              class="birthday-clock__after"
+              id="clock-after"
+              hidden
+            >
+              It’s your day, Doris! Happy birthday!
+            </p>
+            <button
+              class="calendar-reminder"
+              id="add-calendar-reminder"
+              type="button"
+            >
+              Add birthday to my calendar 
+              <span
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="hero-section__portrait-wrap"
+        >
+          <div
+            class="portrait-sunburst"
+            aria-hidden="true"
+          >
+          </div>
+          <figure
+            class="hero-portrait"
+          >
+            <div
+              class="hero-portrait__mat"
+            >
+              <img
+                src="d10.jpeg"
+                alt="Doris smiling in front of a colorful display"
+                fetchpriority="high"
+              >
+            </div>
+            <figcaption
+              class="hero-portrait__caption"
+            >
+              The birthday girl 
+              <span
+                aria-hidden="true"
+              >
+                ✿
+              </span>
+            </figcaption>
+          </figure>
+          <div
+            class="hero-sticker hero-sticker--top"
+            aria-hidden="true"
+          >
+            hello<br>twenty-two ✦
+          </div>
+          <div
+            class="hero-sticker hero-sticker--bottom"
+            aria-hidden="true"
+          >
+            with love
+            <br>
+            always ♡
+          </div>
+          <span
+            class="hero-flower hero-flower--one"
+            aria-hidden="true"
+          >
+            ✳
+          </span>
+          <span
+            class="hero-flower hero-flower--two"
+            aria-hidden="true"
+          >
+            ✧
+          </span>
+        </div>
+        <a
+          class="scroll-note"
+          href="#letter"
+        >
+          <span>
+          </span>
+          <small>
+            Scroll to begin
+          </small>
+        </a>
+            <aside class="chapter-soundtrack" aria-label="Your opening song" data-song-title="Unaweza">
+        <div class="chapter-soundtrack__copy">
+          <span class="chapter-soundtrack__sparkle" aria-hidden="true">♫</span>
+          <div><p class="chapter-soundtrack__eyebrow">Your opening song</p><p class="chapter-soundtrack__title">Unaweza <span>· Paul Clement ft. Patrick Temba</span></p><p class="chapter-soundtrack__note">Your opening song: faith for everything you are stepping into</p></div>
+        </div>
+        <a class="chapter-soundtrack__follow chapter-soundtrack__link" href="https://open.spotify.com/track/0My1tfZBaoh8Wpk7X13eZs" target="_blank" rel="noopener noreferrer">Open on Spotify ↗</a>
+      </aside></section>
+      <div class="blessing-band" aria-hidden="true"><div class="blessing-band__track"><span>Heri ya kuzaliwa</span><span>✦</span><span>Happy birthday</span><span>✦</span><span>Maisha marefu</span><span>✦</span><span>Mungu akubariki</span><span>✦</span><span>Siku njema</span><span>✦</span><span>Miaka 22</span><span>✦</span><span>Doris ✦</span><span>✦</span><span>Heri ya kuzaliwa</span><span>✦</span><span>Happy birthday</span><span>✦</span><span>Maisha marefu</span><span>✦</span><span>Mungu akubariki</span><span>✦</span><span>Siku njema</span><span>✦</span><span>Doris ✦</span><span>✦</span></div></div>
+      <section class="ticket-section section-shell" id="ticket" aria-labelledby="ticket-title">
+        <h2 class="sr-only" id="ticket-title">Your birthday ticket and life in numbers</h2>
+        <div class="ticket" role="img" aria-label="Admit one: Doris, birthday experience, 25 October 2026">
+          <div class="ticket__main">
+            <p class="ticket__eyebrow">Admit one · Birthday experience</p>
+            <p class="ticket__name">Doris</p>
+            <dl><div><dt>Date</dt><dd>25 · 10 · 2026</dd></div><div><dt>Age</dt><dd>22</dd></div><div><dt>Seat</dt><dd>Wherever you are</dd></div><div><dt>Dress code</dt><dd>Joy</dd></div></dl>
+          </div>
+          <div class="ticket__stub"><span class="ticket__bars"></span><p>No. 22</p></div>
+        </div>
+        <p class="ticket-keep"><a class="text-button" href="#keep">Keep or share this ticket ↓</a></p>
+        <p class="script-note">Your life in numbers</p>
+        <div class="numbers">
+          <div class="number"><b data-n="days">0</b><span>days of sunshine</span></div>
+          <div class="number"><b data-n="hours">0</b><span>hours of being you</span></div>
+          <div class="number"><b data-n="beats">0</b><span>heartbeats, give or take</span></div>
+          <div class="number"><b data-n="seconds">0</b><span>seconds, still counting</span></div>
+        </div>
+      </section>
+      <section class="words-section section-shell section-shell--cream" id="words" aria-labelledby="words-title">
+        <p class="script-note">Doris, in her own words</p>
+        <h2 id="words-title">This page <em>is made of you.</em></h2>
+        <div class="words-grid">
+          <a class="word-card" href="#studio"><q>I love music of all kinds that have vibe</q><span>♫ Kelele Studio</span></a>
+          <a class="word-card" href="#studio"><q>I like singing in a choir</q><span>♪ Be the choir</span></a>
+          <a class="word-card" href="#mirror"><q>I like looking and feeling pretty and smart</q><span>✦ Kioo cha Doris</span></a>
+          <a class="word-card" href="#boss"><q>I like making my business successful</q><span>↗ Bosi Doris</span></a>
+          <button class="word-card" id="words-surprise" type="button"><q>I like surprises</q><span>🎁 Surprise me</span></button>
+          <a class="word-card" href="#studio"><q>Me ni mtu mwenye kupenda kelele ila sio mchokozi</q><span>🔊 Kelele safi</span></a>
+          <a class="word-card word-card--wide" href="#house"><q>I like my family, and one day, a family of my own</q><span>⌂ Nyumba ya Baraka</span></a>
+        </div>
+      </section>
+      <section
+        class="birthday-intro section-shell section-shell--cream"
+        id="letter"
+        aria-labelledby="letter-title"
+      ><button class="secret-star" type="button" data-star="1" style="top:62%;right:4%" aria-label="A hidden star. Tap it for a surprise.">✦</button>
+        <div
+          class="section-marker"
+        >
+          <span>
+            01
+          </span>
+          <i>
+          </i>
+          <small>
+            A note from the heart
+          </small>
+        </div>
+        <div
+          class="letter-layout"
+        >
+          <aside
+            class="letter-aside"
+          >
+            <p
+              class="script-note"
+            >
+              A little something
+              <br>
+              just for you
+            </p>
+            <div
+              class="letter-aside__stamp"
+              aria-hidden="true"
+            >
+              <span>
+                Made
+              </span>
+              <b>
+                ✳
+              </b>
+              <span>
+                with love
+              </span>
+            </div>
+            <p
+              class="letter-aside__small"
+            >
+              Some words are best kept close. These are yours to keep.
+            </p>
+          </aside>
+          <article
+            class="birthday-letter"
+            id="birthday-letter"
+          >
+            <div
+              class="birthday-letter__topline"
+            >
+              <span>
+                Sunday, October 25
+              </span>
+              <span
+                class="letter-heart"
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </div>
+            <p
+              class="birthday-letter__salutation"
+            >
+              To my friend, my sister by heart,
+            </p>
+            <h2
+              id="letter-title"
+            >
+              A letter for
+              <br>
+              <em>
+                your birthday.
+              </em>
+            </h2>
+            <div
+              class="birthday-letter__body"
+            >
+              <p>
+                Happy birthday, Doris. <em>Heri ya kuzaliwa, dada yangu.</em>
+              </p>
+              <p>
+                Some people come into our lives as friends and slowly become family. That’s what you are to me. I’m grateful for your place in my life, for the person you are, and for all the light you bring simply by being yourself.
+              </p>
+              <p>
+                I love seeing the different sides of you in these photos: the playful arcade moments, your pose in front of the music wall, and the quieter moments too. I hope the year ahead brings you many more reasons to smile.
+              </p>
+              <p>
+                Today, I hope you feel celebrated in every way. I hope you laugh loudly, feel deeply loved, eat something delicious, and make a memory that makes you smile long after your birthday is over.
+              </p>
+              <p>
+                As you step into twenty-two, I’m wishing you peace when life feels busy, courage for every new step, joy in the little things, and beautiful opportunities that remind you how much you can do. May the things you’ve been hoping for begin finding their way to you.
+              </p>
+              <p>
+                Thank you for being someone I can call a friend and love like a sister. I’ll always be proud of you, rooting for you, and wishing good things for you.
+              </p>
+              <p>
+                Happy birthday, Doris. I love you like a sister. May this be a wonderful year for you.
+              </p>
+            </div>
+            <p
+              class="birthday-letter__signoff"
+            >
+              With love,
+              <br>
+              <span>
+                Benjamin
+              </span>
+              <b
+                aria-hidden="true"
+              >
+                ♡
+              </b>
+            </p>
+            <button
+              class="letter-read-aloud"
+              id="letter-read-aloud"
+              type="button"
+              aria-pressed="false"
+            >
+              <span
+                class="letter-read-aloud__icon"
+                aria-hidden="true"
+              >
+                ◖
+              </span>
+              <span
+                class="letter-read-aloud__label"
+              >
+                Read this letter aloud
+              </span>
+            </button>
+            <p
+              class="letter-read-aloud__note"
+              id="speech-status"
+              aria-live="polite"
+            >
+              Your browser’s voice feature is optional.
+            </p>
+          </article>
+        </div>
+        <div
+          class="letter-bottom-note"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ✳
+          </span>
+           This page is yours to revisit whenever you need a reminder.
+        </div>
+            <aside class="chapter-soundtrack" aria-label="Songs for the rest of the page" data-song-title="Nafasi">
+        <div class="chapter-soundtrack__copy">
+          <span class="chapter-soundtrack__sparkle" aria-hidden="true">♫</span>
+          <div><p class="chapter-soundtrack__eyebrow">Songs for the rest of the page</p><p class="chapter-soundtrack__title">Nafasi <span>· Paul Clement ft. Bella Kombo</span></p><p class="chapter-soundtrack__note">Then come Nafasi, Mwokozi and Safari, all by Paul Clement</p></div>
+        </div>
+        <a class="chapter-soundtrack__follow chapter-soundtrack__link" href="https://open.spotify.com/track/5CaGvOQgG4bXFKudQkSp96" target="_blank" rel="noopener noreferrer">Open on Spotify ↗</a>
+        <a class="chapter-soundtrack__link" href="https://open.spotify.com/album/24UCW4LVmYBnRmFOB5GrtP" target="_blank" rel="noopener noreferrer">Hear the whole album, The Journey ↗</a>
+      </aside></section>
+      
+      <section class="envelope-section section-shell section-shell--cream" id="open-when" aria-labelledby="open-when-title">
+        <p class="script-note">Sealed just for you</p>
+        <h2 id="open-when-title">Letters to <em>open when…</em></h2>
+        <div class="envelope-grid"><button class="envelope" type="button" aria-expanded="false"><span class="envelope__flap" aria-hidden="true">✉</span><span class="envelope__title">Open when you need courage</span><span class="envelope__note">You were not given a spirit of fear. Take the next small step. I am cheering for you, loudly.</span></button><button class="envelope" type="button" aria-expanded="false"><span class="envelope__flap" aria-hidden="true">✉</span><span class="envelope__title">Open when you miss someone</span><span class="envelope__note">Distance does not shrink love. Send the message, make the call. You are remembered more than you know.</span></button><button class="envelope" type="button" aria-expanded="false"><span class="envelope__flap" aria-hidden="true">✉</span><span class="envelope__title">Open when you doubt yourself</span><span class="envelope__note">Read this twice: you are capable, chosen, and already enough. Rest, then rise.</span></button><button class="envelope" type="button" aria-expanded="false"><span class="envelope__flap" aria-hidden="true">✉</span><span class="envelope__title">Open when you are happy</span><span class="envelope__note">Then dance! Take the photo, tell a friend, and thank God out loud.</span></button></div>
+      </section>
+      <section
+        class="gallery-section section-shell section-shell--cream"
+        id="gallery"
+        aria-labelledby="gallery-title"
+      ><button class="secret-star" type="button" data-star="2" style="bottom:2%;left:6%" aria-label="A hidden star. Tap it for a surprise.">✦</button>
+        <div
+          class="section-marker"
+        >
+          <span>
+            02
+          </span>
+          <i>
+          </i>
+          <small>
+            A little gallery of you
+          </small>
+        </div>
+        <div
+          class="section-heading section-heading--split"
+        >
+          <div>
+            <p
+              class="script-note"
+            >
+              A few snapshots worth keeping
+            </p>
+            <h2
+              id="gallery-title"
+            >
+              Every version of you
+              <br>
+              is 
+              <em>
+                worth celebrating.
+              </em>
+            </h2>
+          </div>
+          <div
+            class="gallery-intro"
+          >
+            <p>
+              A small collection of photos of you, Doris. Each one gets its own little place in this keepsake.
+            </p>
+            <p
+              class="gallery-intro__hint"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+               Tap a photo to see it up close.
+            </p>
+          </div>
+        </div>
+        <div
+          class="gallery-toolbar"
+          role="group"
+          aria-label="Photo album controls"
+        >
+          <div
+            class="gallery-filters"
+            role="group"
+            aria-label="Choose the gallery view"
+          >
+            <button
+              class="gallery-filter is-active"
+              type="button"
+              data-gallery-filter="all"
+              aria-pressed="true"
+            >
+              All memories 
+              <span>
+                08
+              </span>
+            </button>
+            <button
+              class="gallery-filter"
+              type="button"
+              data-gallery-filter="favorites"
+              aria-pressed="false"
+            >
+              Saved 
+              <span
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </button>
+          </div>
+          <button
+            class="gallery-slideshow"
+            id="slideshow-toggle"
+            type="button"
+            aria-pressed="false"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ▶
+            </span>
+             Start slideshow
+          </button>
+        </div>
+        <div
+          class="photo-gallery"
+          id="photo-gallery"
+          aria-live="polite"
+        >
+          <figure
+            class="photo-tile photo-tile--01"
+            data-photo-kind="portrait"
+            data-photo-index="0"
+            data-image="d2.jpeg"
+            data-caption="A moment worth keeping"
+          >
+            <button
+              class="photo-tile__open"
+              type="button"
+              aria-label="01 A moment worth keeping. Open photo 1 of 8"
+            >
+              <img
+                src="d2.jpeg"
+                alt="Doris seated at a table with a cake in front of her"
+                loading="lazy"
+              >
+              <span
+                class="photo-tile__shade"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="photo-tile__number"
+              >
+                01
+              </span>
+              <span
+                class="photo-tile__caption"
+              >
+                A moment worth keeping
+              </span>
+              <span
+                class="photo-tile__zoom"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </button>
+            <button
+              class="photo-tile__favorite"
+              type="button"
+              aria-pressed="false"
+              aria-label="Save photo 1 to favorites"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </button>
+          </figure>
+          <figure
+            class="photo-tile photo-tile--02"
+            data-photo-kind="portrait"
+            data-photo-index="1"
+            data-image="d3.jpeg"
+            data-caption="Simply, beautifully you"
+          >
+            <button
+              class="photo-tile__open"
+              type="button"
+              aria-label="02 Simply, beautifully you. Open photo 2 of 8"
+            >
+              <img
+                src="d3.jpeg"
+                alt="Doris in a red dress at a music-themed display"
+                loading="lazy"
+              >
+              <span
+                class="photo-tile__shade"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="photo-tile__number"
+              >
+                02
+              </span>
+              <span
+                class="photo-tile__caption"
+              >
+                Simply, beautifully you
+              </span>
+              <span
+                class="photo-tile__zoom"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </button>
+            <button
+              class="photo-tile__favorite"
+              type="button"
+              aria-pressed="false"
+              aria-label="Save photo 2 to favorites"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </button>
+          </figure>
+          <figure
+            class="photo-tile photo-tile--03"
+            data-photo-kind="portrait"
+            data-photo-index="2"
+            data-image="d4.jpeg"
+            data-caption="A face that makes a room brighter"
+          >
+            <button
+              class="photo-tile__open"
+              type="button"
+              aria-label="03 A face that makes a room brighter. Open photo 3 of 8"
+            >
+              <img
+                src="d4.jpeg"
+                alt="Doris standing outdoors in front of a wall covered with chalk writing"
+                loading="lazy"
+              >
+              <span
+                class="photo-tile__shade"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="photo-tile__number"
+              >
+                03
+              </span>
+              <span
+                class="photo-tile__caption"
+              >
+                A face that makes a room brighter
+              </span>
+              <span
+                class="photo-tile__zoom"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </button>
+            <button
+              class="photo-tile__favorite"
+              type="button"
+              aria-pressed="false"
+              aria-label="Save photo 3 to favorites"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </button>
+          </figure>
+          <figure
+            class="photo-tile photo-tile--04"
+            data-photo-kind="portrait"
+            data-photo-index="3"
+            data-image="d5.jpeg"
+            data-caption="Tako la Taifa!!!!!"
+          >
+            <button
+              class="photo-tile__open"
+              type="button"
+              aria-label="04 Tako la Taifa!!!!!. Open photo 4 of 8"
+            >
+              <img
+                src="d5.jpeg"
+                alt="Doris walking up an escalator, seen from behind"
+                loading="lazy"
+              >
+              <span
+                class="photo-tile__shade"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="photo-tile__number"
+              >
+                04
+              </span>
+              <span
+                class="photo-tile__caption"
+              >
+                Tako la Taifa!!!!!
+              </span>
+              <span
+                class="photo-tile__zoom"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </button>
+            <button
+              class="photo-tile__favorite"
+              type="button"
+              aria-pressed="false"
+              aria-label="Save photo 4 to favorites"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </button>
+          </figure>
+          <figure
+            class="photo-tile photo-tile--05"
+            data-photo-kind="portrait"
+            data-photo-index="4"
+            data-image="d6.jpeg"
+            data-caption="A little more Doris in the world"
+          >
+            <button
+              class="photo-tile__open"
+              type="button"
+              aria-label="05 A little more Doris in the world. Open photo 5 of 8"
+            >
+              <img
+                src="d6.jpeg"
+                alt="Doris seated at an arcade in an orange top"
+                loading="lazy"
+              >
+              <span
+                class="photo-tile__shade"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="photo-tile__number"
+              >
+                05
+              </span>
+              <span
+                class="photo-tile__caption"
+              >
+                A little more Doris in the world
+              </span>
+              <span
+                class="photo-tile__zoom"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </button>
+            <button
+              class="photo-tile__favorite"
+              type="button"
+              aria-pressed="false"
+              aria-label="Save photo 5 to favorites"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </button>
+          </figure>
+          <figure
+            class="photo-tile photo-tile--06"
+            data-photo-kind="portrait"
+            data-photo-index="5"
+            data-image="d7.jpeg"
+            data-caption="A kiss sent your way"
+          >
+            <button
+              class="photo-tile__open"
+              type="button"
+              aria-label="06 A kiss sent your way. Open photo 6 of 8"
+            >
+              <img
+                src="d7.jpeg"
+                alt="Doris at the arcade blowing a kiss toward the camera"
+                loading="lazy"
+              >
+              <span
+                class="photo-tile__shade"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="photo-tile__number"
+              >
+                06
+              </span>
+              <span
+                class="photo-tile__caption"
+              >
+                A kiss sent your way
+              </span>
+              <span
+                class="photo-tile__zoom"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </button>
+            <button
+              class="photo-tile__favorite"
+              type="button"
+              aria-pressed="false"
+              aria-label="Save photo 6 to favorites"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </button>
+          </figure>
+          <figure
+            class="photo-tile photo-tile--07"
+            data-photo-kind="portrait"
+            data-photo-index="6"
+            data-image="d8.jpeg"
+            data-caption="A moment with a little extra color"
+          >
+            <button
+              class="photo-tile__open"
+              type="button"
+              aria-label="07 A moment with a little extra color. Open photo 7 of 8"
+            >
+              <img
+                src="d8.jpeg"
+                alt="Doris seated at an arcade game"
+                loading="lazy"
+              >
+              <span
+                class="photo-tile__shade"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="photo-tile__number"
+              >
+                07
+              </span>
+              <span
+                class="photo-tile__caption"
+              >
+                A moment with a little extra color
+              </span>
+              <span
+                class="photo-tile__zoom"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </button>
+            <button
+              class="photo-tile__favorite"
+              type="button"
+              aria-pressed="false"
+              aria-label="Save photo 7 to favorites"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </button>
+          </figure>
+          <figure
+            class="photo-tile photo-tile--08"
+            data-photo-kind="portrait"
+            data-photo-index="7"
+            data-image="d9.jpeg"
+            data-caption="Your own kind of magic"
+          >
+            <button
+              class="photo-tile__open"
+              type="button"
+              aria-label="08 Your own kind of magic. Open photo 8 of 8"
+            >
+              <img
+                src="d9.jpeg"
+                alt="Doris holding a soft toy at the arcade"
+                loading="lazy"
+              >
+              <span
+                class="photo-tile__shade"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="photo-tile__number"
+              >
+                08
+              </span>
+              <span
+                class="photo-tile__caption"
+              >
+                Your own kind of magic
+              </span>
+              <span
+                class="photo-tile__zoom"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </button>
+            <button
+              class="photo-tile__favorite"
+              type="button"
+              aria-pressed="false"
+              aria-label="Save photo 8 to favorites"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </button>
+          </figure>
+        </div>
+        <p
+          class="gallery-empty"
+          id="gallery-empty"
+          hidden
+        >
+          No photos in this view yet. Save a few favorites first.
+        </p>
+        <div
+          class="gallery-footnote"
+        >
+          <span
+            class="gallery-footnote__star"
+            aria-hidden="true"
+          >
+            ✧
+          </span>
+          <p>
+            These moments are little reminders of the person we’re lucky to celebrate.
+          </p>
+          <span
+            class="gallery-footnote__star"
+            aria-hidden="true"
+          >
+            ✧
+          </span>
+        </div>
+        <div
+          class="memory-index"
+          aria-label="Photo album index"
+        >
+          <span>
+            Album index
+          </span>
+          <span>
+            Eight photographs
+          </span>
+          <span>
+            One wonderful Doris
+          </span>
+        </div>
+            </section>
+      <section
+        class="video-section section-shell"
+        id="video-memory"
+        aria-labelledby="video-title"
+      ><button class="secret-star" type="button" data-star="3" style="top:9%;right:7%" aria-label="A hidden star. Tap it for a surprise.">✦</button>
+        <div
+          class="section-marker section-marker--light"
+        >
+          <span>
+            03
+          </span>
+          <i>
+          </i>
+          <small>
+            A moment in motion
+          </small>
+        </div>
+        <div
+          class="video-story-layout"
+        >
+          <div
+            class="video-story-copy"
+          >
+            <p
+              class="script-note"
+            >
+              Some memories move
+            </p>
+            <h2
+              id="video-title"
+            >
+              Press play
+              <br>
+              on a little 
+              <em>
+                joy.
+              </em>
+            </h2>
+            <p
+              class="video-story-copy__intro"
+            >
+              A photograph holds a moment. A video lets it move again. Here’s a little piece of your collection, kept safe in this birthday corner.
+            </p>
+            <p
+              class="video-story-copy__hint"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ✳
+              </span>
+               No rush. Watch whenever you feel like it.
+            </p>
+            <button
+              class="button button--outline-light"
+              id="video-play-button"
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+              >
+                ▶
+              </span>
+               Play your video memory
+            </button>
+          </div>
+          <div
+            class="video-frame"
+            id="video-frame"
+          >
+            <div
+              class="video-frame__topline"
+            >
+              <span>
+                MEMORY NO. 01
+              </span>
+              <span>
+                PRESS PLAY WHEN READY
+              </span>
+            </div>
+            <video
+              id="birthday-video"
+              controls
+              playsinline
+              preload="metadata"
+              poster="d10.jpeg"
+              aria-label="A birthday video memory for Doris"
+            >
+              <source
+                src="d1.mp4"
+                type="video/mp4"
+              >
+              Your browser does not support embedded video. You can still celebrate with the photo album.
+            </video>
+            <div
+              class="video-frame__caption"
+            >
+              <span>
+                Some memories move. Press play.
+              </span>
+              <span
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="video-afterthought"
+        >
+          <span>
+            ✦
+          </span>
+          <p>
+            May this year give you many new moments that you’ll want to replay.
+          </p>
+          <span>
+            ✦
+          </span>
+        </div>
+            </section>
+      <section class="celebrate-section section-shell section-shell--cream" id="celebrate" aria-labelledby="celebrate-title">
+        <p class="script-note">Tap a card</p>
+        <h2 id="celebrate-title">Four things I <em>celebrate in you.</em></h2>
+        <div class="flip-grid"><button class="flip-card" type="button" aria-pressed="false"><span class="flip-card__inner"><span class="flip-card__face flip-card__front"><b aria-hidden="true">✦</b><span>Your light</span><small>tap to flip</small></span><span class="flip-card__face flip-card__back"><span>You make ordinary days feel a little brighter.</span></span></span></button><button class="flip-card" type="button" aria-pressed="false"><span class="flip-card__inner"><span class="flip-card__face flip-card__front"><b aria-hidden="true">♡</b><span>Your heart</span><small>tap to flip</small></span><span class="flip-card__face flip-card__back"><span>You love people in a way they can really feel.</span></span></span></button><button class="flip-card" type="button" aria-pressed="false"><span class="flip-card__inner"><span class="flip-card__face flip-card__front"><b aria-hidden="true">✧</b><span>Your courage</span><small>tap to flip</small></span><span class="flip-card__face flip-card__back"><span>Every brave step you take is worth cheering for.</span></span></span></button><button class="flip-card" type="button" aria-pressed="false"><span class="flip-card__inner"><span class="flip-card__face flip-card__front"><b aria-hidden="true">✳</b><span>Your joy</span><small>tap to flip</small></span><span class="flip-card__face flip-card__back"><span>May your laughter always find its way back to you.</span></span></span></button></div>
+      </section>
+      <section class="memory-section section-shell section-shell--cream" id="memory-game" aria-labelledby="memory-title">
+        <p class="script-note">A little game</p>
+        <h2 id="memory-title">Match the <em>memories.</em></h2>
+        <p class="cake-hint" id="memory-status" role="status" aria-live="polite">Find all six pairs.</p>
+        <div class="memory-grid" id="memory-grid"></div>
+        <button class="text-button" id="memory-again" type="button" hidden>Play again</button>
+      </section>
+      <section class="cake-section section-shell" id="make-a-wish" aria-labelledby="cake-title"><button class="secret-star" type="button" data-star="4" style="bottom:11%;right:9%" aria-label="A hidden star. Tap it for a surprise.">✦</button>
+        <p class="script-note">One more thing…</p>
+        <h2 id="cake-title">Close your eyes <em>and make a wish.</em></h2>
+        <p class="cake-hint">Twenty-two years of you, four little flames. Tap each candle to blow it out, and when the last one goes, your wish begins.</p>
+        <div class="cake" role="group" aria-label="Birthday cake with four candles">
+          <div class="cake-candles"><button class="candle is-lit" type="button" aria-pressed="false" aria-label="Blow out candle 1"><i class="flame"></i></button><button class="candle is-lit" type="button" aria-pressed="false" aria-label="Blow out candle 2"><i class="flame"></i></button><button class="candle is-lit" type="button" aria-pressed="false" aria-label="Blow out candle 3"><i class="flame"></i></button><button class="candle is-lit" type="button" aria-pressed="false" aria-label="Blow out candle 4"><i class="flame"></i></button></div>
+          <div class="cake-tier cake-tier--top"></div><div class="cake-tier cake-tier--bottom"></div><div class="cake-plate"></div>
+        </div>
+        <p class="cake-status" id="cake-status" role="status" aria-live="polite">4 candles still glowing</p>
+        <p class="cake-wish" id="cake-wish" hidden>Heri ya kuzaliwa, Doris. <em>May every wish you just made find its way to you.</em></p>
+        <button class="text-button cake-relight" id="cake-relight" type="button" hidden>Light them again</button>
+      </section>
+      <section class="lantern-section section-shell" id="lanterns" aria-labelledby="lantern-title">
+        <p class="script-note">Make it count</p>
+        <h2 id="lantern-title">Send a wish <em>to the sky.</em></h2>
+        <div class="lantern-sky" id="lantern-sky"></div>
+        <div class="lantern-form">
+          <label class="sr-only" for="lantern-text">Your wish</label>
+          <input id="lantern-text" maxlength="48" placeholder="Type a wish for your new year…" autocomplete="off">
+          <button class="button button--plum" id="lantern-send" type="button">Release lantern ✦</button>
+        </div>
+      </section>
+      <section class="wheel-section section-shell section-shell--cream" id="wheel" aria-labelledby="wheel-title">
+        <p class="script-note">Feeling lucky?</p>
+        <h2 id="wheel-title">Spin for <em>a surprise.</em></h2>
+        <div class="wheel-wrap"><span class="wheel-pointer" aria-hidden="true">▼</span><div class="wheel" id="wheel-disc" aria-hidden="true"></div></div>
+        <button class="button button--plum" id="wheel-spin" type="button">Spin the wheel</button>
+        <p class="wheel-result" id="wheel-result" role="status" aria-live="polite">Your prize is waiting…</p>
+      </section>
+      <section class="studio-section section-shell" id="studio" aria-labelledby="studio-title">
+        <p class="script-note">Kelele Studio</p>
+        <h2 id="studio-title">Loud, <em>never a troublemaker.</em></h2>
+        <p class="studio-quote">“Me ni mtu mwenye kupenda kelele ila sio mchokozi.” <span>Doris</span></p>
+        <p class="studio-label">1 · Be the choir: tap all four voices</p>
+        <div class="choir" role="group" aria-label="Choir voices"><button class="voice" type="button" aria-pressed="false" data-hz="130.81"><b>Bass</b></button><button class="voice" type="button" aria-pressed="false" data-hz="196.0"><b>Tenor</b></button><button class="voice" type="button" aria-pressed="false" data-hz="329.63"><b>Alto</b></button><button class="voice" type="button" aria-pressed="false" data-hz="523.25"><b>Soprano</b></button></div>
+        <p class="studio-label">2 · Make a beat with any vibe</p>
+        <div class="pads" role="group" aria-label="Beat pads"><button class="pad" type="button" data-pad="kick">Kick</button><button class="pad" type="button" data-pad="snare">Snare</button><button class="pad" type="button" data-pad="hat">Hat</button><button class="pad" type="button" data-pad="clap">Clap</button><button class="pad" type="button" data-pad="bass">Bass</button><button class="pad" type="button" data-pad="stab">Stab</button><button class="pad" type="button" data-pad="tom">Tom</button><button class="pad" type="button" data-pad="whoop">Whoop</button></div>
+        <p class="studio-label">3 · Hold for kelele</p>
+        <button class="kelele-btn" id="kelele-btn" type="button">KELELE</button>
+        <div class="meter" id="kelele-meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="studio-status" id="studio-status" role="status" aria-live="polite">Loud, never rude. Tap, hold, sing.</p>
+      </section>
+      <section class="mirror-section section-shell section-shell--cream" id="mirror" aria-labelledby="mirror-title">
+        <p class="script-note">Kioo cha Doris</p>
+        <h2 id="mirror-title">Pretty <em>and</em> smart.</h2>
+        <div class="mirror-tabs" role="group" aria-label="Choose a mood">
+          <button class="mirror-tab" type="button" data-mode="pretty" aria-pressed="false">Pretty</button>
+          <button class="mirror-tab" type="button" data-mode="smart" aria-pressed="false">Smart</button>
+          <button class="mirror-tab" type="button" data-mode="both" aria-pressed="true">Both</button>
+        </div>
+        <button class="mirror" id="mirror-btn" type="button"><span class="mirror__glass"><span class="mirror__text" id="mirror-text" aria-live="polite">Tap the mirror, Doris ✦</span></span></button>
+        <div class="riddle">
+          <p class="studio-label">A little brain teaser</p>
+          <p id="riddle-q" class="riddle-q"></p>
+          <p id="riddle-a" class="riddle-a" hidden></p>
+          <div class="riddle-actions"><button class="text-button" id="riddle-reveal" type="button">Show the answer</button><button class="text-button" id="riddle-next" type="button">Another riddle</button></div>
+        </div>
+      </section>
+      <section class="boss-section section-shell" id="boss" aria-labelledby="boss-title">
+        <p class="script-note">Bosi Doris</p>
+        <h2 id="boss-title">Winning the sector, <em>one customer at a time.</em></h2>
+        <ol class="board" id="board" aria-label="Sector leaderboard"></ol>
+        <div class="boss-actions">
+          <button class="boss-btn" type="button" data-stat="customers">Serve a customer</button>
+          <button class="boss-btn" type="button" data-stat="brand">Post something beautiful</button>
+          <button class="boss-btn" type="button" data-stat="reviews">Earn a 5★ review</button>
+          <button class="boss-btn" type="button" data-stat="team">Train the team</button>
+        </div>
+        <p class="boss-stats" id="boss-stats">Customers 0 · Reviews 0 · Brand 0 · Team 0</p>
+        <p class="boss-status" id="boss-status" role="status" aria-live="polite">Pick a move and climb the board.</p>
+        <button class="text-button boss-reset" id="boss-reset" type="button" hidden>Play again</button>
+      </section>
+      <section class="house-section section-shell section-shell--cream" id="house" aria-labelledby="house-title">
+        <p class="script-note">Nyumba ya Baraka</p>
+        <h2 id="house-title">Home is where <em>the heart is loud.</em></h2>
+        <div class="house">
+          <div class="house__roof" aria-hidden="true"></div>
+          <div class="house__body"><button class="window" type="button" aria-pressed="false"><span>Waliokulea</span></button><button class="window" type="button" aria-pressed="false"><span>Ndugu na marafiki</span></button><button class="window" type="button" aria-pressed="false"><span>Kicheko</span></button><button class="window" type="button" aria-pressed="false"><span>Riziki</span></button><button class="window" type="button" aria-pressed="false"><span>Maombi</span></button><button class="window" type="button" aria-pressed="false"><span>Familia ya baadaye</span></button></div>
+        </div>
+        <p class="house-line" id="house-line" role="status" aria-live="polite">Tap a window to light it.</p>
+        <div class="capsule">
+          <label for="capsule-text">A note to your future family</label>
+          <textarea id="capsule-text" rows="4" maxlength="400" placeholder="Write it now. It opens on your next birthday…"></textarea>
+          <button class="button button--plum" id="capsule-seal" type="button">Seal it until 25 Oct 2027</button>
+          <p class="capsule-status" id="capsule-status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+      <section
+        class="wish-jar-section section-shell section-shell--gold"
+        id="wish-jar"
+        aria-labelledby="wish-jar-title"
+      ><button class="secret-star" type="button" data-star="5" style="top:46%;left:3%" aria-label="A hidden star. Tap it for a surprise.">✦</button>
+        <div
+          class="section-marker section-marker--gold"
+        >
+          <span>
+            04
+          </span>
+          <i>
+          </i>
+          <small>
+            Things I’m wishing for you
+          </small>
+        </div>
+        <div
+          class="wish-jar-layout"
+        >
+          <div
+            class="wish-jar-copy"
+          >
+            <p
+              class="script-note"
+            >
+              A small wish, just for you
+            </p>
+            <h2
+              id="wish-jar-title"
+            >
+              A whole year
+              <br>
+              of 
+              <em>
+                good things.
+              </em>
+            </h2>
+            <p>
+              Keep this little jar close. Every time you tap the button, another wish for the year ahead will find its way to you.
+            </p>
+            <button
+              class="button button--plum"
+              id="draw-wish"
+              type="button"
+            >
+              <span>
+                Give me another wish
+              </span>
+              <span
+                aria-hidden="true"
+              >
+                ✦
+              </span>
+            </button>
+            <div
+              class="wish-jar-tools"
+            >
+              <button
+                class="text-button"
+                id="save-current-wish"
+                type="button"
+                aria-pressed="false"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ♡
+                </span>
+                 Save this wish
+              </button>
+              <button
+                class="text-button"
+                id="share-current-wish"
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ↗
+                </span>
+                 Share this wish
+              </button>
+            </div>
+          </div>
+          <div
+            class="wish-jar-art"
+            aria-hidden="true"
+          >
+            <div
+              class="jar-sparkle jar-sparkle--one"
+            >
+              ✦
+            </div>
+            <div
+              class="jar-sparkle jar-sparkle--two"
+            >
+              ✧
+            </div>
+            <div
+              class="wish-jar-illustration"
+            >
+              <div
+                class="jar-lid"
+              >
+              </div>
+              <div
+                class="jar-neck"
+              >
+              </div>
+              <div
+                class="jar-body"
+              >
+                <span>
+                  ✳
+                </span>
+                <span>
+                  ♡
+                </span>
+                <span>
+                  ✧
+                </span>
+                <i>
+                </i>
+                <b>
+                  WISHES
+                  <br>
+                  FOR YOU
+                </b>
+              </div>
+            </div>
+            <span
+              class="jar-caption"
+            >
+              a pocket of possibility
+            </span>
+          </div>
+        </div>
+        <div
+          class="wish-reveal-card"
+          id="wish-reveal-card"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <span
+            class="wish-reveal-card__ornament"
+            aria-hidden="true"
+          >
+            ✦
+          </span>
+          <p
+            class="wish-reveal-card__label"
+          >
+            A birthday wish for Doris
+          </p>
+          <p
+            class="wish-reveal-card__message"
+            id="current-wish-message"
+          >
+            May this year bring you more laughter, music, and days that feel wonderfully yours.
+          </p>
+          <span
+            class="wish-reveal-card__ornament"
+            aria-hidden="true"
+          >
+            ✦
+          </span>
+        </div>
+            </section>
+      
+      
+      <section
+        class="birthday-video-postscript section-shell section-shell--cream"
+        aria-label="A birthday blessing"
+      >
+        <div
+          class="postscript-ornament"
+          aria-hidden="true"
+        >
+          ✳
+        </div>
+        <p
+          class="script-note"
+        >
+          A small blessing for your next chapter
+        </p>
+        <p
+          class="postscript-quote"
+        >
+          May you find joy in what’s here,
+          <br>
+          courage for what’s next,
+          <br>
+          and love around you 
+          <em>
+            always.
+          </em>
+        </p>
+        <div
+          class="postscript-sign"
+        >
+          <span>
+          </span>
+          <small>
+            with love, for Doris
+          </small>
+          <span>
+          </span>
+        </div>
+            </section>
+      <section class="secret-section section-shell" id="secret-chapter" aria-labelledby="secret-title" hidden>
+        <p class="script-note">Secret chapter unlocked ✦</p>
+        <h2 id="secret-title">You found <em>every star.</em></h2>
+        <p>Of course you did. Here is the last thing I saved for you: twenty-two is only the beginning, and this little corner of the internet will be here whenever you need a reminder that you are loved. Mungu akubariki sana, Doris.</p>
+        <p class="secret-sign">Benjamin</p>
+      </section>
+      <section
+        class="finale-section"
+        id="finale"
+        aria-labelledby="finale-title"
+      >
+        <div
+          class="finale-collage"
+          aria-label="A collage of birthday photos of Doris"
+        >
+          <img
+            class="finale-photo finale-photo--one"
+            src="d9.jpeg"
+            alt="Doris holding a soft toy"
+            loading="lazy"
+          >
+          <img
+            class="finale-photo finale-photo--two"
+            src="d10.jpeg"
+            alt="Doris smiling"
+            loading="lazy"
+          >
+          <img
+            class="finale-photo finale-photo--three"
+            src="d4.jpeg"
+            alt="Doris outdoors"
+            loading="lazy"
+          >
+        </div>
+        <div
+          class="finale-shade"
+        >
+        </div>
+        <div
+          class="finale-content"
+        >
+          <p
+            class="eyebrow eyebrow--gold"
+          >
+            One last thing before you go
+          </p>
+          <h2
+            id="finale-title"
+          >
+            The world is better
+            <br>
+            <em>
+              with you in it.
+            </em>
+          </h2>
+          <p>
+            Happy birthday, Doris.
+            <br>
+            Keep shining, keep laughing, and keep being wonderfully you.
+          </p>
+          <div
+            class="finale-signoff"
+          >
+            <span>
+            </span>
+            <b>
+              Made with love,
+              <br>
+              for my sister at heart.
+            </b>
+            <span>
+            </span>
+          </div>
+          <button
+            class="button button--light button--large"
+            id="return-to-start"
+            type="button"
+          >
+            <span>
+              Take me back to the beginning
+            </span>
+            <span
+              aria-hidden="true"
+            >
+              ↑
+            </span>
+          </button>
+          <button
+            class="finale-share"
+            id="share-birthday"
+            type="button"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+             Share this birthday page
+          </button>
+        </div>
+        <div
+          class="finale-confetti-word"
+          aria-hidden="true"
+        >
+          DORIS
+        </div>
+            </section>
+      <section class="keep-section section-shell section-shell--cream" id="keep" aria-labelledby="keep-title">
+        <p class="script-note">Keep it forever</p>
+        <h2 id="keep-title">Make it <em>yours to keep.</em></h2>
+        <p class="keep-intro">Post your birthday ticket to WhatsApp Status, and keep this little world one tap away on your phone.</p>
+        <div class="keep-preview"><canvas id="ticket-canvas" width="540" height="960" role="img" aria-label="Preview of your birthday ticket picture"></canvas></div>
+        <div class="keep-actions">
+          <button class="button button--plum" id="ticket-share" type="button">Share my ticket <span aria-hidden="true">↗</span></button>
+          <button class="button button--plum" id="ticket-save" type="button">Save as a picture</button>
+          <button class="button button--plum" id="install-btn" type="button">Add to my home screen</button>
+        </div>
+        <p class="keep-status" id="keep-status" role="status" aria-live="polite"></p>
+        <p class="keep-help" id="install-help" hidden></p>
+      </section>
+      <section class="reply-section section-shell section-shell--cream" id="send-a-note" aria-labelledby="reply-title">
+        <div class="reply-card">
+          <p class="script-note">A little note back</p>
+          <h2 id="reply-title">What should we <em>remember?</em></h2>
+          <p class="reply-intro">Tell me your favorite part of this birthday surprise, or what you’d like us to do together next.</p>
+          <form id="reply-form" class="reply-form">
+            <fieldset class="reaction-row"><legend>How did it feel?</legend>
+              <button class="reaction" type="button" aria-pressed="false" data-r="Loved it" aria-label="Loved it">😍</button>
+              <button class="reaction" type="button" aria-pressed="false" data-r="Touched my heart" aria-label="Touched my heart">🥹</button>
+              <button class="reaction" type="button" aria-pressed="false" data-r="Made me laugh" aria-label="Made me laugh">😂</button>
+              <button class="reaction" type="button" aria-pressed="false" data-r="Wow, so creative" aria-label="Wow, so creative">🔥</button>
+              <button class="reaction" type="button" aria-pressed="false" data-r="Grateful" aria-label="Grateful">🙏</button>
+            </fieldset>
+            <label for="reply-message">Your note</label>
+            <textarea id="reply-message" name="message" rows="5" maxlength="1200" aria-describedby="reply-privacy" placeholder="Write whatever you’d like me to know…"></textarea>
+            <p class="reply-privacy" id="reply-privacy">This opens an email draft addressed to Benjamin. Review it and press Send in your email app; this page does not submit or store your note.</p>
+            <button class="button button--plum" type="submit">Send your note <span aria-hidden="true">↗</span></button>
+            <button class="text-button" type="button" id="reply-copy">Copy my note instead</button>
+            <p class="reply-status" id="reply-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="site-footer"
+    >
+      <a
+        class="footer-brand"
+        href="#home"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ✳
+        </span>
+         For Doris
+      </a>
+      <p>
+        A birthday keepsake made with love.
+      </p>
+      <a
+        class="footer-top"
+        href="#home"
+      >
+        Back to the top 
+        <span
+          aria-hidden="true"
+        >
+          ↑
+        </span>
+      </a>
+      <small>
+        Sunday, October 25, 2026 · East Africa Time
+      </small>
+    </footer>
+    <dialog
+      class="photo-lightbox"
+      id="photo-lightbox"
+      aria-label="Photo viewer"
+    >
+      <div
+        class="lightbox-shell"
+      >
+        <div
+          class="lightbox-toolbar"
+        >
+          <span
+            class="lightbox-counter"
+            id="lightbox-counter"
+          >
+            01 / 08
+          </span>
+          <button
+            class="lightbox-close"
+            id="lightbox-close"
+            type="button"
+            aria-label="Close photo viewer"
+          >
+            ×
+          </button>
+        </div>
+        <button
+          class="lightbox-arrow lightbox-arrow--previous"
+          id="lightbox-previous"
+          type="button"
+          aria-label="Previous photo"
+        >
+          ‹
+        </button>
+        <figure
+          class="lightbox-figure"
+        >
+          <img
+            id="lightbox-image"
+            src="d2.jpeg"
+            alt="Doris"
+          >
+          <figcaption
+            id="lightbox-caption"
+          >
+            A moment worth keeping
+          </figcaption>
+        </figure>
+        <button
+          class="lightbox-arrow lightbox-arrow--next"
+          id="lightbox-next"
+          type="button"
+          aria-label="Next photo"
+        >
+          ›
+        </button>
+        <div
+          class="lightbox-bottom"
+        >
+          <button
+            class="lightbox-favorite"
+            id="lightbox-favorite"
+            type="button"
+            aria-pressed="false"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ♡
+            </span>
+             Save this photo
+          </button>
+          <span
+            class="lightbox-hint"
+          >
+            Use arrow keys or swipe to browse
+          </span>
+        </div>
+      </div>
+    </dialog>
+    <button class="chime-toggle" id="chime-toggle" type="button" aria-pressed="true" aria-label="♪ on. Tap sounds switch">♪ on</button>
+    <div class="star-chip" id="star-chip" role="status">✦ 0/5 hidden stars</div>
+    <div class="star-toast" id="star-toast" role="status" aria-live="polite" hidden></div>
+    <button class="surprise-fab is-gated" id="surprise-fab" type="button">🎁 Surprise me</button>
+    <aside class="benjamin-panel" id="benjamin-panel" hidden>
+      <p><b>Benjamin’s panel</b> (only visible at the address ending in #benjamin)</p>
+      <button class="button button--plum" id="benjamin-test" type="button">Send a test report</button>
+      <button class="text-button" id="benjamin-preview" type="button">Preview a report</button>
+      <pre id="benjamin-out" aria-live="polite">Reports are sent when Doris opens the site, every few minutes while she explores, and when she leaves.</pre>
+    </aside>
+    <aside class="soundtrack-dock" id="soundtrack-dock" aria-label="Birthday soundtrack player">
+      <div class="soundtrack-dock__heading">
+        <span class="soundtrack-dock__note" aria-hidden="true">♫</span>
+        <div>
+          <p class="soundtrack-dock__eyebrow">Birthday soundtrack</p>
+          <p class="soundtrack-dock__current" id="soundtrack-current">Birthday songs for Doris</p>
+        </div>
+        <button class="soundtrack-dock__button" id="soundtrack-play" type="button">Start music</button>
+        <button class="soundtrack-dock__toggle" id="soundtrack-toggle" type="button" aria-expanded="false" aria-controls="soundtrack-player" hidden>Show player</button>
+      </div>
+      <div class="soundtrack-dock__player" id="soundtrack-player">
+        <div id="spotify-player"></div>
+      </div>
+      <p class="soundtrack-dock__status" id="soundtrack-status" aria-live="polite">Tap Start music to hear Paul Clement’s songs for you.</p>
+    </aside>
+    <div
+      class="toast-region"
+      id="toast-region"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+    </div>
+    <div
+      class="screen-reader-status visually-hidden"
+      id="screen-reader-status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+    </div>
+    <script
+      src="doris.js"
+      defer
+    >
+    </script>
+  </body>
+</html>
